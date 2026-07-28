@@ -1735,8 +1735,9 @@
 
       if (!document.getElementById("tripId").value) {
         document.getElementById("tDriver").value = vehicle.driver || "";
-        document.getElementById("tStartKm").value = Number(vehicle.odometer || 0);
-        document.getElementById("tEndKm").value = Number(vehicle.odometer || 0);
+        // Leave Start and End Meter completely blank for manual typing
+        document.getElementById("tStartKm").value = "";
+        document.getElementById("tEndKm").value = "";
         calculateTripDistance();
       }
     }
