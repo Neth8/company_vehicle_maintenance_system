@@ -1115,8 +1115,8 @@
               <input class="input" id="fOdometer" type="number" min="0" />
             </label>
             <label>Litres *
-              <input class="input" id="fLitres" type="number" min="0" step="0.01" required />
-            </label>
+  <input class="input" id="fLitres" type="number" min="0" step="0.001" required />
+</label>
             <label>Price per Litre (Rs.) *
               <input class="input" id="fPrice" type="number" min="0" step="0.01" required />
             </label>
@@ -1577,7 +1577,7 @@
           <td>${fmtDate(r.date)}</td>
           <td class="vehicle-title">${esc(vehicleName(r.vehicleId))}</td>
           <td>${Number(r.odometer || 0).toLocaleString()} km</td>
-          <td>${Number(r.litres || 0).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2})} L</td>
+          <td>${Number(r.litres || 0).toLocaleString(undefined,{minimumFractionDigits:3,maximumFractionDigits:3})} L</td>
           <td class="money">${fmtMoney(r.price)}</td>
           <td class="money">${fmtMoney(r.total)}</td>
           <td>${esc(r.station || "—")}</td>
@@ -1593,7 +1593,7 @@
       const totalCost = rows.reduce((s,r) => s + Number(r.total || 0), 0);
       const totalLitres = rows.reduce((s,r) => s + Number(r.litres || 0), 0);
       document.getElementById("fuelTotalCost").textContent = fmtMoney(totalCost);
-      document.getElementById("fuelTotalLitres").textContent = totalLitres.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2}) + " L";
+      document.getElementById("fuelTotalLitres").textContent = totalLitres.toLocaleString(undefined,{minimumFractionDigits:3,maximumFractionDigits:3}) + " L";
       document.getElementById("fuelAvgPrice").textContent = fmtMoney(totalLitres ? totalCost / totalLitres : 0);
     }
 
